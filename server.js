@@ -21,6 +21,18 @@ app.get('/shop', function (request, response) {
 app.get('/spaceStation', function (request, response) {
   response.render('pages/spaceStation', { title: 'SpaceStation' })
 })
+app.get('/planet', function (request, response) {
+  response.render('pages/planet', { title: 'Planet' })
+})
+app.get('/spaceStation_on_orbit', function (request, response) {
+  response.render('pages/spaceStation_on_orbit', { title: 'SpaceStation_on_orbit' })
+})
+app.get('/delivered_cargo_to_station', function (request, response) {
+  response.render('pages/delivered_cargo_to_station', { title: 'Delivered_cargo_to_station' })
+})
+app.get('/delivered_cargo_to_planet', function (request, response) {
+  response.render('pages/delivered_cargo_to_planet', { title: 'Delivered_cargo_to_planet' })
+})
 
 // запускаємо аплікацію
 app.listen(process.env.PORT || 8080)

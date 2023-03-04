@@ -6,30 +6,30 @@ block prepend styles
 block content
   div(class='breadcrumb')
     li= title
-  form(id='spaceStation-add-form' name='spaceStation-add-form' class='form-inline' action='')
+  form(id='planet-add-form' name='planet-add-form' class='form-inline' action='')
     div(class='form-group')
       div(class='col-md-3')
-        label(for='name') Number
+        label(for='name') Name
       div(class='col-md-9')
-        input(id='number' name='number' value='' class='form-control')
+        input(id='name' name='name' value='' class='form-control')
     div(class='form-group')
       div(class='col-md-3')
-        label(for='name') Capacity
+        label(for='name') Storage capacity
       div(class='col-md-9')
-        input(id='capacity' name='capacity' value='' class='form-control')        
+        input(id='storage_capacity' name='storage_capacity' value='' class='form-control')        
     div(class='form-group')
       div(class='col-md-3')
-        label(for='name') Requirement
+        label(for='name') Mass
       div(class='col-md-9')
-        input(id='requirement' name='requirement' value='' class='form-control')     
+        input(id='mass' name='mass' value='' class='form-control')     
     div(class='form-group')
       div(class='col-md-12')
         button(type='submit' class='btn btn-primary') Create
     div.list-wrapper
-      table(id='spaceStation-list')
+      table(id='planet-list')
   
 block append scripts
-  script(src='/static/js/models/spaceStation.js')
+  script(src='/static/js/models/planet.js')
   script(src='//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js')
-  script(src='/static/js/views/spaceStation.js')
+  script(src='/static/js/views/planet.js')
       

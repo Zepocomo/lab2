@@ -47,23 +47,51 @@ class BaseModel {// eslint-disable-line no-unused-vars
   FindIndexById (id) {
     return this.Select().findIndex(item => item.id === id)
   }
-  Create (row) {
+  Create (data) {
     const collection = this.Select()
-    const entry = this.GetEmpty()
-
-    entry.id = this.getNextId(collection)
-    for (const key in row) {
-      if (entry.hasOwnProperty(key) &&
-          entry.key !== 'id') {
-        entry[key] = row[key]
-      }
+    const lastEntry = collection[collection.length - 1]
+    const newId = lastEntry ? lastEntry.id + 1 : 1 // get a new unique ID
+  
+    // check if the new ID is unique
+    while (collection.some(entry => entry.id === newId)) {
+      newId++ // increment the ID until it is unique
     }
-
-    collection.push(entry)
-
+  
+    data.id = newId
+    collection.push(data)
     this.Commit(collection)
-
+  
     const event = new CustomEvent(`${this.collectionName}ListDataChanged`, { detail: collection })
     document.dispatchEvent(event)
   }
+  
+  Delete (id) {
+    let collection = this.Select()
+    const index = this.FindIndexById(id)
+    if (index >= 0) {
+      collection.splice(index, 1)
+      this.Commit(collection)
+  
+      const event = new CustomEvent(`${this.collectionName}ListDataChanged`, { detail: collection })
+      document.dispatchEvent(event)
+    }
+  }
+
+  Update (id, row) {
+    const collection = this.Select()
+    const index = this.FindIndexById(id)
+    if (index >= 0) {
+      const entry = collection[index]
+      for (const key in row) {
+        if (entry.hasOwnProperty(key) && entry.key !== 'id') {
+          entry[key] = row[key]
+        }
+      }
+      this.Commit(collection)
+  
+      const event = new CustomEvent(`${this.collectionName}ListDataChanged`, { detail: collection })
+      document.dispatchEvent(event)
+    }
+  }
 }
+
