@@ -9,14 +9,14 @@ block content
   form(id='spaceStation_on_orbit-add-form' name='spaceStation_on_orbit-add-form' class='form-inline' action='')
     div(class='form-group')
       div(class='col-md-3')
-        label(for='name') Planet
+        label(for='name') ID
       div(class='col-md-9')
-        input(id='name' name='name' value='' class='form-control')
+        input(id='id' name='id' value='' class='form-control')
     div(class='form-group')
       div(class='col-md-3')
-        label(for='name') SpaceStation
+        label(for='name') Name
       div(class='col-md-9')
-        input(id='number' name='number' value='' class='form-control')        
+        input(id='name' name='name' value='' class='form-control')        
     div(class='form-group')
       div(class='col-md-12')
         button(type='submit' class='btn btn-primary') Create
@@ -26,4 +26,3 @@ block append scripts
   script(src='/static/js/models/spaceStation_on_orbit.js')
   script(src='//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js')
   script(src='/static/js/views/spaceStation_on_orbit.js')
-      

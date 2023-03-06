@@ -84,3 +84,4 @@ window.addEventListener('DOMContentLoaded', e => {
   initListEvents()
   initRemoveButton()
 })
+
